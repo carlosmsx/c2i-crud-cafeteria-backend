@@ -1,7 +1,7 @@
-import express, { response } from 'express';
-// const express = require('express');
+import express, { response } from 'express'; // const express = require('express');
 import morgan from 'morgan'; 
 import cors from 'cors';
+import './src/database';
 
 const app = express();
 

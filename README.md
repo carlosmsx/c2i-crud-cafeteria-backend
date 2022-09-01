@@ -18,3 +18,6 @@ npm i morgan
 ###cors
 permite recibir peticiones remotas (otra ip)
 npm i cors
+
+moongose
+npm i mongoose --save
