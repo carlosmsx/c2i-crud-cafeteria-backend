@@ -2,6 +2,7 @@ import express, { response } from 'express'; // const express = require('express
 import morgan from 'morgan'; 
 import cors from 'cors';
 import './src/database';
+import router from './src/routes/productos.routes';
 
 const app = express();
 
@@ -21,11 +22,4 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static("./public"));
 
 //rutas
-// app.get('/', (req, res)=>{
-//     res.send('primera peticion get'); 
-// })
-
-app.get('/test', (req,res)=>{
-    res.send('test');
-})
-
+app.use('/apicafe', router);
