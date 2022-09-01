@@ -7,3 +7,4 @@ git init
 babeljs.io
 npm install babel-cli babel-preset-env
 
+npm install -g nodemon 
