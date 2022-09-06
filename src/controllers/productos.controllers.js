@@ -1,5 +1,31 @@
-export const crearProducto = (req,res)=>{
-    res.send('crear un producto en la db');
+import Producto from "../models/producto";
+
+export const crearProducto = async (req,res)=>{
+    try{
+        console.log(req.body);
+        //validacion
+        //crear un objeto para guardar en la DB
+        const productoNuevo = new Producto({
+            nombreProducto: req.body.nombreProducto,
+            imagen: req.body.imagen,
+            precio: req.body.precio,
+            categoria: req.body.categoria
+        }); //const productoNuevo = new Producto(req.body);
+        //guardar efectivamente
+        await productoNuevo.save();
+        //enviar respuesta al frontend
+        //res.status(201); estaría bien asi
+        //opcional enviar un mensaje: 
+        res.status(201).json({mensaje:'producto creado exitosamente'});
+    
+        //si algo falla tambien enviar una respuesta
+    }
+    catch(error) {
+        console.log(error);
+        res.status(400).json({
+            mensaje: 'El producto enviado no pudo ser creado'
+        })
+    }
 }
 
 export const listarProductos = (req,res)=>{

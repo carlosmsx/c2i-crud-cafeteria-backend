@@ -13,9 +13,6 @@ router.route('/productos/:id')
 .put(editarProducto)
 .delete(borrarProducto);
 
-router.route('/about')
-.get(getAbout);
-
 export default router;
 
 
