@@ -10,6 +10,10 @@ export const obtenerProducto = (req,res)=>{
     res.send('un producto');
 }
 
-export const getAbout = (req,res)=>{
-    res.send('about...');
+export const editarProducto = (req,res)=>{
+    res.send('editar');
+}
+
+export const borrarProducto = (req,res)=>{
+    res.send('borrar');
 }
