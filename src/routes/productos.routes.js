@@ -1,11 +1,18 @@
 import {Router} from 'express';
+import { crearProducto, listarProductos, obtenerProducto, getAbout } from '../controllers/productos.controllers';
 
 const router = Router();
 
 //crear todas las rutas que tienen que ver con los productos
-router.route('/').get((req,res)=>{
-    res.send('get /');
-})
+router.route('/productos')
+.get(listarProductos)
+.post(crearProducto);
+
+router.route('/productos/:id')
+.get(obtenerProducto);
+
+router.route('/about')
+.get(getAbout);
 
 export default router;
 
