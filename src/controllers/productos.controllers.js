@@ -28,8 +28,17 @@ export const crearProducto = async (req,res)=>{
     }
 }
 
-export const listarProductos = (req,res)=>{
-    res.send('listado de productos');
+export const listarProductos = async (req,res)=>{
+    try {
+        //buscar en la DB la 'collection' de productos
+        const listaProductos = await Producto.find();
+        //enviar la respuesta al frontend
+        res.status(200).json(listaProductos);
+    } 
+    catch (error) {
+        console.log(error);
+        res.status(404).json({mensaje: "Error al buscar los productos"})
+    }
 }
 
 export const obtenerProducto = (req,res)=>{
