@@ -41,8 +41,18 @@ export const listarProductos = async (req,res)=>{
     }
 }
 
-export const obtenerProducto = (req,res)=>{
-    res.send('un producto');
+export const obtenerProducto = async (req,res)=>{
+    try {
+        console.log(req.params)
+        //buscar en la DB el producto
+        const productoBuscado = await Producto.findById(req.params.id);
+        //enviar la respuesta al frontend
+        res.status(200).json(productoBuscado);
+    } 
+    catch (error) {
+        console.log(error);
+        res.status(404).json({mensaje: "producto no encontrado"})
+    }
 }
 
 export const editarProducto = (req,res)=>{
