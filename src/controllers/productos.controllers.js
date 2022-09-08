@@ -55,8 +55,18 @@ export const obtenerProducto = async (req,res)=>{
     }
 }
 
-export const editarProducto = (req,res)=>{
-    res.send('editar');
+export const editarProducto = async (req,res)=>{
+    try {
+        //validar
+        console.log(req.params.id);
+        console.log(req.body);
+        //buscar
+        await Producto.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({mensaje: "edicion ok"});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({mensaje:"edicion error"});
+    }
 }
 
 export const borrarProducto = async (req,res)=>{
