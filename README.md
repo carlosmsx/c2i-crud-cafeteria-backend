@@ -1,5 +1,7 @@
 # Backend de la cafeteria
 
+npm init -y
+
 ## git
 git init
 .gitignore /node_modules

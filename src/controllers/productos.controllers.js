@@ -1,16 +1,7 @@
-import { validationResult } from "express-validator";
 import Producto from "../models/producto";
 
 export const crearProducto = async (req,res)=>{
     try{
-        console.log(req.body);
-        //validacion
-        const errors = validationResult(req);
-        if (!errors.isEmpty())
-        {
-            //return res.status(400).json({errors: errors.array()}); //muestra todos los errores encontrados
-            return res.status(400).json({errors: errors.mapped()}); //muestra el primer error que se rompe
-        }
         //crear un objeto para guardar en la DB
         const productoNuevo = new Producto({
             nombreProducto: req.body.nombreProducto,
