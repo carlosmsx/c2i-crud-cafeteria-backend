@@ -1,0 +1,1 @@
+//TODO: validar nombre, precio, imagen y categoria
