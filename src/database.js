@@ -7,7 +7,7 @@ const url = 'mongodb+srv://carlosmsx:ePSOItVV9oWvJGfw@cluster0.x3szwek.mongodb.n
 //const url = 'mongodb+srv://mdanielacardozo:mtkZQ5FjoyI9ZEIk@clusterdani.7tfbsbj.mongodb.net/cafeteria';
 
 //Conexion a DB como lo vimos en clase
-/*
+
 mongoose.connect(url);
 
 const connection = mongoose.connection;
@@ -15,10 +15,10 @@ const connection = mongoose.connection;
 connection.once('open', ()=>{
     console.log('base de datos conectada');
 })
-*/
+
 
 //Otra manera de conectar
-
+/*
 const connectDB = async()=>
 {
     try {
@@ -30,3 +30,4 @@ const connectDB = async()=>
 }
 
 connectDB();
+*/
