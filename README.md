@@ -1,16 +1,22 @@
-expressjs.com
-npm install express --save
+# Backend de la cafeteria
 
+npm init -y
+
+## git
 git init
 .gitignore /node_modules
 
-babeljs.io
+## expressjs.com
+npm install express --save
+
+## babeljs.io
 npm install babel-cli babel-preset-env
 
+## nodemon
 npm install -g nodemon 
 
-##middlewares
-###morgan
+## middlewares
+### morgan
 nos da información por consola acerca de los requests y sus correspondientes responses
 
 npm i morgan
@@ -19,5 +25,8 @@ npm i morgan
 permite recibir peticiones remotas (otra ip)
 npm i cors
 
-moongose
+### moongose
 npm i mongoose --save
+
+### validaciones
+npm install --save express-validator

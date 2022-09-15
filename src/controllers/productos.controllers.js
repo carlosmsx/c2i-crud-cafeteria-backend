@@ -1,9 +1,7 @@
 import Producto from "../models/producto";
 
-export const crearProducto = async (req, res) => {
-    try {
-        console.log(req.body);
-        //validacion
+export const crearProducto = async (req,res)=>{
+    try{
         //crear un objeto para guardar en la DB
         const productoNuevo = new Producto({
             nombreProducto: req.body.nombreProducto,
@@ -52,51 +50,27 @@ export const obtenerProducto = async (req, res) => {
     }
 };
 
-export const editarProducto = async (req, res) => {
-    //console.log(req.body);
-    //res.send('editar');
+export const editarProducto = async (req,res)=>{
     try {
-        const productoEditado = new Producto({
-            _id: req.body._id,
-            nombreProducto: req.body.nombreProducto,
-            imagen: req.body.imagen,
-            precio: req.body.precio,
-            categoria: req.body.categoria,
-        }); //const productoEditado = new Producto(req.body);
-        //guardar efectivamente
-        await productoEditado.update(productoEditado);
-        //enviar respuesta al frontend
-        //opcional enviar un mensaje:
-        res.status(200).json({ mensaje: "producto creado exitosamente" });
+        //validar
+        console.log(req.params.id);
+        console.log(req.body);
+        //buscar
+        await Producto.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({mensaje: "edicion ok"});
     } catch (error) {
         console.log(error);
+        res.status(400).json({mensaje:"edicion error"});
     }
+}
 
-    //si algo falla tambien enviar una respuesta
-};
-
-/*
-export const borrarProducto = async(req, res) => {
-    res.send("borrar");
+export const borrarProducto = async (req,res)=>{
     try {
-        await Producto.findByIdAndDelete(body._id);
+        //buscar un producto por el id y luego borrarlo
+        await Producto.findByIdAndDelete(req.params.id);
+        res.status(200).json({mensaje: "el producto fue eliminado correctamente"});
     } catch (error) {
         console.log(error);
+        res.status(400).json({mensaje: 'Error al intentar borrar el producto'});
     }
-};
-*/
-
-export const borrarProducto = async(req, res)=>{
-    try{
-     //buscar un producto por el id en la collection de productos de la BD y luego borrar
-     await Producto.findByIdAndDelete(req.params.id);
-     res.status(200).json({
-         mensaje: 'El producto fue eliminado correctamente'
-     })
-    }catch(error){
-     console.log(error);
-     res.status(400).json({
-         mensaje:'Error al intentar borrar el producto'
-     })
-    }
- }
+}
